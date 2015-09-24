@@ -1,0 +1,34 @@
+<h1>New Article</h1>
+
+<br>
+<a href="http://api.rubyonrails.org/">Tutorial at http://api.rubyonrails.org/</a>
+<br>
+
+<!-- 
+"url: articles_path" will alter the <form action>.
+Tells the Rails to point the form to a URI pattern with articles prefix via POST.
+It is associated with the create action of the ArticlesController.
+-->
+
+<!-------------------------------------------------------
+BEFORE using partial file "articles/_form.html.erb"
+Note the difference in form_for line usage.
+BLOCKA
+
+%= form_for :article, url: articles_path do |f| %>
+...
+% end %>
+-->
+
+<!--
+AFTER using partial file "articles/_form.html.erb".
+Can now remove the entire BLOCKA code since _form.html.erb will replace it.
+
+"Everything except for the form_for declaration remained the same.
+The reason we can use this shorter, simpler form_for declaration to stand in for
+either of the other forms is that @article is a resource corresponding to a full
+set of RESTful routes, and Rails is able to infer which URI and method to use."
+-->
+<%= render 'form' %>
+
+<%= link_to 'Back', articles_path %>

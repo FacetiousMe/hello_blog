@@ -1,0 +1,32 @@
+<!-- 
+Source code uses an Article reference that was set within "articles_controller.rb"
+-->
+
+<p>
+	<strong>Title:</strong>
+	<%= @article.title %>
+</p>
+
+<p>
+	<strong>Text:</strong>
+	<%= @article.text %>
+</p>
+
+<!-- 
+The @article object is available to any partials rendered in the view because we defined it as an instance variable. 
+-->
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+<!-- 
+Will render the partial "_comments.html.erb" from "comments/" for each comment in @article.comments
+-->
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+<!-- 
+Will render the partial "_form.html.erb" from "comments/"
+-->
+
+<%= link_to 'Edit', edit_article_path(@article) %> | 
+<%= link_to 'Back', articles_path %>

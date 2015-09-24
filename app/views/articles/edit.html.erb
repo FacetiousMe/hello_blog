@@ -1,0 +1,31 @@
+<h1>Editing article</h1>
+
+
+<!--
+:patch tells Rails to submit the form via PATCH HTTP method (expected to usage for REST
+protocol) to update resources.
+
+form_for will create a form, allowing the user to create/update attributes of a model object. 
+-->
+
+<!-------------------------------------------------------
+BEFORE using partial file "articles/_form.html.erb"
+Note the difference in form_for line usage.
+BLOCKA
+
+%= form_for :article, url: article_path(@article), method: :patch do |f| %>
+
+--------------------------------------------------------->
+
+<!--
+AFTER using partial file "articles/_form.html.erb".
+Can now remove the entire BLOCKA code since _form.html.erb will replace it.
+
+"Everything except for the form_for declaration remained the same.
+The reason we can use this shorter, simpler form_for declaration to stand in for
+either of the other forms is that @article is a resource corresponding to a full
+set of RESTful routes, and Rails is able to infer which URI and method to use."
+-->
+<%= render 'form' %>
+
+<%= link_to 'Back', articles_path %>
